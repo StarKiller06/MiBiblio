@@ -12,6 +12,7 @@ class Libros extends Model
         'genero_id',
         'editoriales_id',
         'año_publicacion',
+        'archivo',
     ];
         public function genero(){
         return $this->belongsTo(Genero::class);

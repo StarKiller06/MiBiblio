@@ -23,7 +23,9 @@ class PrestamoResource extends Resource
     {
         return $form
             ->schema([
-                //
+                Forms\Components\TextInput::make('isbn'),
+
+
             ]);
     }
 
@@ -31,6 +33,10 @@ class PrestamoResource extends Resource
     {
         return $table
             ->columns([
+
+                Tables\Columns\TextColumn::make('isbn')
+                    ->searchable(),
+                    
                 Tables\Columns\TextColumn::make('created_at')
                     ->dateTime()
                     ->sortable()

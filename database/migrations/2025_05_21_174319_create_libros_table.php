@@ -19,7 +19,7 @@ return new class extends Migration
             $table->foreignId('genero_id')->nullable();//llave foranea (Viene de otra tabla como el genero)
             $table->foreignId('editoriales_id')->nullable();//Osea que depende de otra tabla
             $table->date('año_publicacion')->nullable();//Integer es el que usa laravel para almacenar numeros
-            $table->string('titulo')->nullable();//puede ir vacio, este dato es para el pdf
+            $table->string('archivo')->nullable();//puede ir vacio, este dato es para el pdf
             $table->timestamps();
         });
     }

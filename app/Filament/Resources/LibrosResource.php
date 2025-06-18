@@ -55,12 +55,15 @@ class LibrosResource extends Resource
                 Forms\Components\DatePicker::make('año_publicacion'),
                     
 
-                FileUpload::make('archivo_pdf') // Cambia 'titulo' por un nombre más descriptivo como 'archivo_pdf'
-                    ->acceptedFileTypes(['application/pdf']) // Especifica mejor el tipo MIME
+                Forms\Components\FileUpload::make('archivo_pdf')
+                    ->label('Archivo PDF')
+                    ->directory('libros-pdfs')  // Guarda en storage/app/public/libros-pdfs
+                    ->acceptedFileTypes(['application/pdf'])
+                    ->downloadable()  // Habilita descarga desde el formulario
+                    ->openable()      // Permite abrir en nueva pestaña
                     ->preserveFilenames()
-                    ->label('Archivo PDF del libro')
                     ->required()
-                    ->directory('libros-pdfs') // Especifica un directorio para guardar los archivos
+                    ->columnSpanFull(),
                 
             ]);
              
@@ -92,11 +95,7 @@ class LibrosResource extends Resource
                     ->sortable(),
 
 //dudoso
-                Tables\Columns\TextColumn::make('archivo_pdf')
-                ->label('PDF')
-                ->formatStateUsing(function ($state) {
-                    return 'Descargar PDF'; // Texto del enlace
-                }),
+                Tables\Columns\TextColumn::make('archivo_pdf'),
                 
                 Tables\Columns\TextColumn::make('created_at')
                     ->dateTime()
